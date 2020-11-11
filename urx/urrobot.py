@@ -5,6 +5,7 @@ http://support.universal-robots.com/URRobot/RemoteAccess
 """
 
 import logging
+import time
 
 from urx import urrtmon
 from urx import ursecmon
@@ -366,6 +367,7 @@ class URRobot(object):
         prog += end
         self.send_program(prog)
         if wait:
+            time.sleep(1)
             self._wait_for_move(target=pose_list[-1], threshold=threshold)
             return self.getl()
 
